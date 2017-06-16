@@ -86,6 +86,35 @@ function twentyseventeen_customize_register( $wp_customize ) {
 	) );
 
 	/**
+	 * AMP Mode Option
+	 */
+	$wp_customize->add_setting( 'amp_mode' , array(
+		'type'       => 'theme_mod',
+		'default'    => true,
+		'capability' => 'edit_theme_options',
+		'transport'  => 'postMessage'
+	) );
+
+	$wp_customize->add_section( 'twentyseventeen_amp_mode' , array(
+		'title'       => __( 'AMP Mode', 'twentyseventeen' ),
+		'priority'    => 30,
+		'capability'  => 'edit_theme_options',
+		'description' => __( 'AMP-Compatibility mode' ),
+	) );
+
+	$wp_customize->add_control(
+		'amp_mode',
+		array(
+			'label'       => __( 'AMP Mode', 'twentyseventeen' ),
+			'section'     => 'twentyseventeen_amp_mode',
+			'settings'    => 'amp_mode',
+			'capability'  => 'edit_theme_options',
+			'type'        => 'checkbox',
+			'description' => __( 'Enable/disable AMP-Compatibility Mode' ),
+		)
+	);
+
+	/**
 	 * Filter number of front page sections in Twenty Seventeen.
 	 *
 	 * @since Twenty Seventeen 1.0
